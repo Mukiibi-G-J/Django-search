@@ -19,13 +19,39 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
     {% block title %} {% endblock title %}
   </head>
   <body>
-    {% include "myapp/nav.html" %} {% block content %} {% endblock content %}
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
+    {% include "myapp/nav.html" %} 
+    <h1 class="ui large">Make a Search</h1>
+  <div class="search">
+    <!-- <h1 class="heading-title">Make a Search</h1> -->
+ 
+    <form method="post" action="{% url 'new_search' %}" class="ui form">
+    {% csrf_token %}
+     
+        <input type="text" placeholder="Search" name="search" >
+    </input>
+      <button class="ui button" type="submit" name="btnsearch">submit</button>
+    </form>
+  </div>
+    
+    
+    
+    {% block content %} {% endblock content %}
+     {% include 'myapp/footer.html' %}
     <!-- custom js file link  -->
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
